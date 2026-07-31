@@ -1,11 +1,15 @@
 (function () {
   const CONFIG_KEY = "lifetag_supabase_config";
   const QUEUE_KEY = "lifetag_sync_queue";
+  const DEFAULT_CONFIG = {
+    url: "https://djcylgxxrgzpymlfgeau.supabase.co",
+    anonKey: "sb_publishable_P3AQaiIpw-VnLb5xpR7nuw_Kt91DVrj"
+  };
   let client = null;
   let user = null;
   let syncPromise = null;
 
-  function config() { try { return JSON.parse(localStorage.getItem(CONFIG_KEY)) || {}; } catch { return {}; } }
+  function config() { try { return JSON.parse(localStorage.getItem(CONFIG_KEY)) || DEFAULT_CONFIG; } catch { return DEFAULT_CONFIG; } }
   function configured() { const value = config(); return Boolean(value.url && value.anonKey && window.supabase); }
   function setStatus(state) {
     document.documentElement.dataset.cloud = state;
