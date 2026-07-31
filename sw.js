@@ -1,4 +1,4 @@
-const CACHE="lifetag-v5";
+const CACHE="lifetag-v6";
 const ASSETS=["./","index.html","profiles.html","profile.html","emergency.html","add-profile.html","care.html","settings.html","auth.html","style.css","app.js","care.js","backend.js","auth.js","qr.js","assets/logo.svg"];
 self.addEventListener("install",event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)).then(()=>self.skipWaiting())));
 self.addEventListener("activate",event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key!==CACHE).map(key=>caches.delete(key)))).then(()=>self.clients.claim())));
