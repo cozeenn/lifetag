@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LifeTag | Settings</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html"><img src="assets/logo.svg" alt="LifeTag logo"><span><strong>LifeTag</strong><small>Emergency Information Vault</small></span></a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a><a href="add-profile.html">Add Profile</a><a href="profiles.html">Search Profiles</a><a class="active" href="settings.html">Settings</a>
+      <button class="icon-button" id="themeToggle" type="button">◐</button>
+    </nav>
+  </header>
+  <main class="section settings-page">
+    <div class="section-heading"><div><span class="eyebrow">Data management</span><h1 class="page-title">Settings and backup</h1></div><p>Manage all profiles stored in this browser.</p></div>
+    <section class="settings-grid">
+      <article class="form-card cloud-card"><div class="card-heading"><span class="card-icon">S</span><div><h3>Secure Cloud Account</h3><p>Connect Supabase, sign in, and synchronize across devices.</p></div></div><div class="setting-row"><div><strong data-cloud-status>Checking cloud…</strong><span>Offline data remains available on this device.</span></div></div><a class="button button-primary button-full" href="auth.html">Manage Cloud Account</a></article>
+      <article class="form-card"><div class="card-heading"><span class="card-icon">A</span><div><h3>Appearance</h3><p>Switch between light and dark mode.</p></div></div><button class="button button-outline button-full" id="settingsThemeToggle">Toggle Theme</button></article>
+      <article class="form-card"><div class="card-heading"><span class="card-icon">B</span><div><h3>Export All Profiles</h3><p>Download every saved profile as one JSON backup.</p></div></div><button class="button button-primary button-full" id="exportAllProfiles">Export All Profiles</button></article>
+      <article class="form-card"><div class="card-heading"><span class="card-icon">C</span><div><h3>Import Profiles</h3><p>Restore profiles from a LifeTag JSON backup.</p></div></div><label class="button button-outline button-full file-button">Import Backup<input id="importAllProfiles" type="file" accept=".json,application/json"></label></article>
+      <article class="form-card danger-card"><div class="card-heading"><span class="card-icon">D</span><div><h3>Clear All Profiles</h3><p>Permanently remove all profiles from this browser.</p></div></div><button class="button button-danger-ghost button-full" id="clearAllProfiles">Delete All Profiles</button></article>
+    </section>
+  </main>
+  <dialog id="messageDialog" class="dialog"><form method="dialog"><div class="dialog-icon" id="messageIcon">✓</div><h3 id="messageTitle">Complete</h3><p id="messageText"></p><button class="button button-primary button-full">Okay</button></form></dialog>
+  <script src="app.js"></script>
+</body>
+</html>

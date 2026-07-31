@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LifeTag | Emergency Mode</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="emergency-page">
+  <header class="emergency-header">
+    <a class="emergency-brand" href="profiles.html"><img src="assets/logo.svg" alt="LifeTag logo"><span>LifeTag Emergency Mode</span></a>
+    <div class="emergency-header-actions">
+      <a class="button emergency-light-button" id="backProfile" href="profiles.html">Back to Profile</a>
+      <button class="button emergency-light-button" id="printEmergency" type="button">Print</button>
+    </div>
+  </header>
+
+  <main class="emergency-main">
+    <div class="emergency-alert">EMERGENCY MEDICAL INFORMATION</div>
+    <h1 id="emergencyName">PROFILE NOT FOUND</h1>
+    <section class="emergency-key-grid">
+      <article class="emergency-key blood"><span>Blood Type</span><strong id="emergencyBlood">—</strong></article>
+      <article class="emergency-key"><span>Birthdate and Age</span><strong id="emergencyBirthdate">—</strong></article>
+    </section>
+    <section class="emergency-action-strip" aria-label="Emergency actions">
+      <a class="emergency-action primary" href="tel:911"><small>Emergency services</small><strong>Call 911</strong></a>
+      <a class="emergency-action" id="mapsLink" href="#" target="_blank" rel="noopener"><small>Saved address</small><strong>Open in Maps</strong></a>
+      <button class="emergency-action" id="copyEmergencySummary" type="button"><small>For responders</small><strong>Copy Summary</strong></button>
+    </section>
+    <section class="emergency-info-grid">
+      <article><span>Known Allergies</span><strong id="emergencyAllergies">—</strong></article>
+      <article><span>Medical Conditions</span><strong id="emergencyConditions">—</strong></article>
+      <article><span>Current Medications</span><strong id="emergencyMedications">—</strong></article>
+      <article><span>Emergency Notes</span><strong id="emergencyNotes">—</strong></article>
+    </section>
+    <section id="emergencyActionPlans" class="emergency-plans" hidden><span>CONDITION-SPECIFIC RESPONSE PLANS</span><div id="emergencyActionPlanList"></div></section>
+    <section class="emergency-contact-box">
+      <div><span>CALL EMERGENCY CONTACT</span><strong id="emergencyContact">—</strong><small id="emergencyRelationship">—</small></div>
+      <a id="emergencyPhoneLink" href="#"><span>Call Now</span><strong id="emergencyPhone">—</strong></a>
+    </section>
+    <p class="emergency-location" id="emergencyLocation"></p>
+    <section class="emergency-clinical-footer">
+      <div><span>Preferred Hospital</span><strong id="emergencyHospital">&mdash;</strong></div>
+      <div><span>Primary Physician</span><strong id="emergencyPhysician">&mdash;</strong></div>
+      <div><span>Communication Needs</span><strong id="emergencyAccessibility">&mdash;</strong></div>
+    </section>
+    <section class="qr-emergency-card">
+      <div><span class="eyebrow">Quick access</span><h2>Profile QR Code</h2><p>This QR code opens this exact emergency profile when the project is hosted.</p></div>
+      <div id="qrCode" class="qr-code"></div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+  <script src="app.js"></script>
+  <script src="qr.js"></script>
+</body>
+</html>

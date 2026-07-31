@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LifeTag | Search Profiles</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <img src="assets/logo.svg" alt="LifeTag logo">
+      <span><strong>LifeTag</strong><small>Emergency Information Vault</small></span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="add-profile.html">Add Profile</a>
+      <a class="active" href="profiles.html">Search Profiles</a>
+      <a href="settings.html">Settings</a>
+      <button class="icon-button" id="themeToggle" type="button">◐</button>
+    </nav>
+  </header>
+
+  <main class="section">
+    <div class="section-heading">
+      <div><span class="eyebrow">Profile directory</span><h1 class="page-title">Search saved profiles</h1></div>
+      <p>Search by person name, emergency contact, location, or medical information.</p>
+    </div>
+
+    <section class="search-panel">
+      <label class="search-box">
+        <span>⌕</span>
+        <input id="profileSearch" type="search" placeholder="Search a person's name...">
+      </label>
+      <div class="search-count"><strong id="visibleCount">0</strong> profiles found</div>
+    </section>
+
+    <section class="filter-bar" aria-label="Profile filters">
+      <label>Blood type<select id="bloodFilter"><option value="">All blood types</option><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>AB+</option><option>AB-</option><option>O+</option><option>O-</option><option>Unknown</option></select></label>
+      <label>Readiness<select id="readinessFilter"><option value="">All profiles</option><option value="ready">Emergency ready</option><option value="incomplete">Needs attention</option><option value="stale">Review overdue</option></select></label>
+      <label>Sort<select id="profileSort"><option value="name">Name</option><option value="updated">Recently updated</option><option value="completeness">Most complete</option></select></label>
+      <button class="button button-outline" id="clearFilters" type="button">Clear filters</button>
+    </section>
+
+    <section id="profilesGrid" class="profiles-grid"></section>
+
+    <div id="emptyState" class="empty-state" hidden>
+      <div>⌕</div>
+      <h2>No profiles found</h2>
+      <p>Try another search or create a new profile.</p>
+      <a class="button button-primary" href="add-profile.html">Add Profile</a>
+    </div>
+  </main>
+
+  <dialog id="deleteDialog" class="dialog">
+    <form method="dialog">
+      <div class="dialog-icon">🗑</div>
+      <h3>Delete profile?</h3>
+      <p>This profile will be permanently removed from this browser.</p>
+      <div class="dialog-actions">
+        <button class="button button-outline" value="cancel">Cancel</button>
+        <button class="button button-danger-ghost" id="confirmDelete" value="default">Delete</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>

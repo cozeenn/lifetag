@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LifeTag | Profile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <img src="assets/logo.svg" alt="LifeTag logo">
+      <span><strong>LifeTag</strong><small>Emergency Information Vault</small></span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="add-profile.html">Add Profile</a>
+      <a href="profiles.html">Search Profiles</a>
+      <button class="icon-button" id="themeToggle" type="button">◐</button>
+    </nav>
+  </header>
+
+  <main class="section">
+    <div class="profile-detail-header">
+      <div class="avatar large-avatar" id="detailAvatar">LT</div>
+      <div>
+        <span class="eyebrow">LifeTag profile</span>
+        <h1 class="page-title" id="detailName">Profile not found</h1>
+        <p id="detailLocation" class="muted-text"></p>
+      </div>
+      <div class="profile-detail-actions">
+        <a class="button button-primary" id="emergencyLink" href="emergency.html">Emergency Mode</a>
+        <a class="button button-outline" id="editLink" href="add-profile.html">Edit Profile</a>
+        <a class="button button-outline" id="careLink" href="care.html">Open Care Plan</a>
+        <button class="button button-outline" id="shareProfile" type="button">Copy Emergency Link</button>
+      </div>
+    </div>
+
+    <section class="detail-grid">
+      <article class="form-card"><h3>Personal Information</h3><dl>
+        <div><dt>Birthdate</dt><dd id="detailBirthdate">—</dd></div>
+        <div><dt>Blood type</dt><dd id="detailBlood">—</dd></div>
+        <div><dt>Sex</dt><dd id="detailSex">—</dd></div>
+      </dl></article>
+
+      <article class="form-card"><h3>Emergency Contact</h3><dl>
+        <div><dt>Name</dt><dd id="detailContact">—</dd></div>
+        <div><dt>Relationship</dt><dd id="detailRelationship">—</dd></div>
+        <div><dt>Phone</dt><dd><a id="detailPhone" href="#">—</a></dd></div>
+      </dl></article>
+
+      <article class="form-card detail-wide"><h3>Medical Information</h3><dl>
+        <div><dt>Allergies</dt><dd id="detailAllergies">—</dd></div>
+        <div><dt>Conditions</dt><dd id="detailConditions">—</dd></div>
+        <div><dt>Medications</dt><dd id="detailMedications">—</dd></div>
+        <div><dt>Additional Notes</dt><dd id="detailNotes">—</dd></div>
+      </dl></article>
+      <article class="form-card"><h3>Care Team &amp; Coverage</h3><dl>
+        <div><dt>Physician</dt><dd id="detailPhysician">&mdash;</dd></div>
+        <div><dt>Preferred hospital</dt><dd id="detailHospital">&mdash;</dd></div>
+        <div><dt>Insurance</dt><dd id="detailInsurance">&mdash;</dd></div>
+      </dl></article>
+      <article class="form-card"><h3>Readiness</h3><dl>
+        <div><dt>Profile completeness</dt><dd><span class="readiness-badge" id="detailCompleteness">0%</span></dd></div>
+        <div><dt>Last reviewed</dt><dd id="detailReviewed">&mdash;</dd></div>
+        <div><dt>Communication</dt><dd id="detailAccessibility">&mdash;</dd></div>
+      </dl></article>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+# Dependencies and CLI state
+node_modules/
+.supabase/
+
+# Secrets and environment configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Sensitive application exports and local data
+*backup*.json
+*export*.json
+lifetag-*.json
+
+# Logs and operating-system files
+*.log
+.DS_Store
+Thumbs.db
+
+# Editor state
+.vscode/
+.idea/

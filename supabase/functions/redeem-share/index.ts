@@ -1,0 +1,10 @@
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { crypto } from "https://deno.land/std@0.224.0/crypto/mod.ts";
+const json=(body:unknown,status=200)=>new Response(JSON.stringify(body),{status,headers:{"Content-Type":"application/json","Access-Control-Allow-Origin":"*"}});
+Deno.serve(async req=>{if(req.method==="OPTIONS")return json({});const {token}=await req.json();if(!token)return json({error:"Missing token"},400);
+ const bytes=new TextEncoder().encode(token),digest=await crypto.subtle.digest("SHA-256",bytes),hash=[...new Uint8Array(digest)].map(b=>b.toString(16).padStart(2,"0")).join("");
+ const db=createClient(Deno.env.get("SUPABASE_URL")!,Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!);const {data:share}=await db.from("share_links").select("*").eq("token_hash",hash).is("revoked_at",null).gt("expires_at",new Date().toISOString()).maybeSingle();
+ if(!share||share.max_uses!==null&&share.use_count>=share.max_uses)return json({error:"Link expired or revoked"},410);
+ const {data:profile}=await db.from("health_profiles").select("data,verified_at").eq("id",share.profile_id).is("deleted_at",null).single();await db.from("share_links").update({use_count:share.use_count+1}).eq("id",share.id);await db.from("audit_events").insert({profile_id:share.profile_id,action:"share.redeemed",object_type:"share_link",object_id:share.id,metadata:{scope:share.scope}});
+ if(!profile)return json({error:"Profile unavailable"},404);const emergencyKeys=["fullName","birthdate","bloodType","allergies","conditions","medications","notes","contactName","relationship","phone","preferredHospital","physicianName","accessibilityNeeds"];
+ return json({scope:share.scope,verifiedAt:profile.verified_at,profile:share.scope==="emergency"?Object.fromEntries(emergencyKeys.map(k=>[k,profile.data[k]])):profile.data});});

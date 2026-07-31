@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LifeTag | Add Profile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <img src="assets/logo.svg" alt="LifeTag logo">
+      <span><strong>LifeTag</strong><small>Emergency Information Vault</small></span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a class="active" href="add-profile.html">Add Profile</a>
+      <a href="profiles.html">Search Profiles</a>
+      <a href="settings.html">Settings</a>
+      <button class="icon-button" id="themeToggle" type="button">◐</button>
+    </nav>
+  </header>
+
+  <main class="section">
+    <div class="section-heading">
+      <div>
+        <span class="eyebrow">Dedicated data entry</span>
+        <h1 class="page-title" id="formPageTitle">Create a care profile</h1>
+      </div>
+      <p>Complete the form below. Each submission creates a separate searchable profile.</p>
+    </div>
+
+    <form id="multiProfileForm" class="profile-form">
+      <input id="profileId" type="hidden">
+
+      <section class="form-card">
+        <div class="card-heading"><span class="card-icon">1</span><div><h3>Personal Information</h3><p>Information used to identify the person.</p></div></div>
+        <div class="form-grid">
+          <label class="field field-wide"><span>Full name</span><input id="fullName" type="text" required placeholder="Juan Dela Cruz"></label>
+          <label class="field"><span>Birthdate</span><input id="birthdate" type="date"></label>
+          <label class="field"><span>Blood type</span>
+            <select id="bloodType"><option value="">Select</option><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>AB+</option><option>AB-</option><option>O+</option><option>O-</option><option>Unknown</option></select>
+          </label>
+          <label class="field"><span>Sex</span><select id="sex"><option value="">Select</option><option>Female</option><option>Male</option><option>Prefer not to say</option></select></label>
+          <label class="field"><span>City or municipality</span><input id="location" type="text" placeholder="Obando, Bulacan"></label>
+          <label class="field field-wide"><span>Home address</span><input id="address" type="text" autocomplete="street-address" placeholder="Street, barangay, city, province"></label>
+        </div>
+      </section>
+
+      <section class="form-card">
+        <div class="card-heading"><span class="card-icon">2</span><div><h3>Medical Information</h3><p>Details that may affect emergency treatment.</p></div></div>
+        <div class="form-grid">
+          <label class="field field-wide"><span>Allergies</span><textarea id="allergies" rows="3" placeholder="Penicillin, peanuts, or none known"></textarea></label>
+          <label class="field field-wide"><span>Medical conditions</span><textarea id="conditions" rows="3" placeholder="Asthma, diabetes, hypertension"></textarea></label>
+          <label class="field field-wide"><span>Current medications</span><textarea id="medications" rows="3" placeholder="Medicine, dosage, and schedule"></textarea></label>
+          <label class="field field-wide"><span>Emergency notes</span><textarea id="notes" rows="3" placeholder="Additional instructions"></textarea></label>
+          <label class="field"><span>Organ donor status</span><select id="organDonor"><option value="">Not specified</option><option>Yes</option><option>No</option></select></label>
+          <label class="field"><span>Preferred hospital</span><input id="preferredHospital" type="text" placeholder="Hospital or medical center"></label>
+          <label class="field"><span>Primary physician</span><input id="physicianName" type="text" placeholder="Dr. Name"></label>
+          <label class="field"><span>Physician phone</span><input id="physicianPhone" type="tel" placeholder="+63 900 000 0000"></label>
+        </div>
+      </section>
+
+      <section class="form-card">
+        <div class="card-heading"><span class="card-icon">3</span><div><h3>Emergency Contact</h3><p>The first person who should be contacted.</p></div></div>
+        <div class="form-grid">
+          <label class="field"><span>Contact name</span><input id="contactName" type="text"></label>
+          <label class="field"><span>Relationship</span><input id="relationship" type="text"></label>
+          <label class="field"><span>Phone number</span><input id="phone" type="tel"></label>
+          <label class="field"><span>Alternative phone</span><input id="altPhone" type="tel"></label>
+          <label class="field"><span>Secondary contact</span><input id="secondaryContactName" type="text"></label>
+          <label class="field"><span>Secondary contact phone</span><input id="secondaryPhone" type="tel"></label>
+        </div>
+      </section>
+
+      <section class="form-card">
+        <div class="card-heading"><span class="card-icon">4</span><div><h3>Care and Coverage</h3><p>Useful context for coordinated care. Keep policy details private when sharing.</p></div></div>
+        <div class="form-grid">
+          <label class="field"><span>Insurance provider</span><input id="insuranceProvider" type="text"></label>
+          <label class="field"><span>Policy or member ID</span><input id="insurancePolicy" type="text"></label>
+          <label class="field"><span>Last medical review</span><input id="lastReviewed" type="date"></label>
+          <label class="field"><span>Preferred language</span><input id="preferredLanguage" type="text" placeholder="English, Filipino, etc."></label>
+          <label class="field field-wide"><span>Accessibility or communication needs</span><textarea id="accessibilityNeeds" rows="2" placeholder="Hearing, mobility, speech, sensory, or interpreter needs"></textarea></label>
+        </div>
+      </section>
+
+      <div class="form-actions">
+        <button class="button button-primary" type="submit">Save Profile</button>
+        <button class="button button-outline" id="resetForm" type="button">Clear Form</button>
+        <a class="button button-outline" href="profiles.html">View All Profiles</a>
+      </div>
+    </form>
+  </main>
+
+  <dialog id="messageDialog" class="dialog">
+    <form method="dialog">
+      <div class="dialog-icon" id="messageIcon">✓</div>
+      <h3 id="messageTitle">Saved</h3>
+      <p id="messageText">Profile saved.</p>
+      <button class="button button-primary button-full">Okay</button>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>

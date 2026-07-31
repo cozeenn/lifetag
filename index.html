@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#b4232c">
+  <link rel="manifest" href="manifest.webmanifest">
+  <title>LifeTag | Emergency Information Vault</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <img src="assets/logo.svg" alt="LifeTag logo">
+      <span><strong>LifeTag</strong><small>Emergency Information Vault</small></span>
+    </a>
+    <nav class="nav-links">
+      <a class="active" href="index.html">Home</a>
+      <a href="add-profile.html">Add Profile</a>
+      <a href="profiles.html">Search Profiles</a>
+      <a href="settings.html">Settings</a>
+      <button class="icon-button" id="themeToggle" type="button">◐</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero section">
+      <div class="hero-copy">
+        <span class="eyebrow">Multi-profile emergency information system</span>
+        <h1>Prepared care, when every second matters.</h1>
+        <p>
+          Manage emergency readiness for family, patients, or your community. Keep critical health details current,
+          spot incomplete records, and give responders a focused view when it matters most.
+        </p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="add-profile.html">Add New Profile</a>
+          <a class="button button-outline" href="profiles.html">Search Profiles</a>
+        </div>
+        <div class="feature-row">
+          <span>✓ Multiple profiles</span>
+          <span>✓ Search by name</span>
+          <span>✓ Dedicated data entry</span>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="preview-header"><span class="status-dot"></span>Profile Directory</div>
+        <div class="dashboard-stat">
+          <small>Total saved profiles</small>
+          <strong id="profileCount">0</strong>
+        </div>
+        <div class="dashboard-metrics">
+          <div><strong id="readyCount">0</strong><small>Emergency ready</small></div>
+          <div><strong id="needsReviewCount">0</strong><small>Need attention</small></div>
+        </div>
+        <div class="dashboard-links">
+          <a href="profiles.html"><span>+</span><strong>Open a care plan</strong><small>Choose a profile to manage ongoing care</small></a>
+          <a href="add-profile.html"><span>＋</span><strong>Create a profile</strong><small>Enter personal and medical information</small></a>
+          <a href="profiles.html"><span>⌕</span><strong>Find a profile</strong><small>Search by full name or contact</small></a>
+          <a href="settings.html"><span>⚙</span><strong>Manage data</strong><small>Export, import, and clear profiles</small></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <strong>LifeTag</strong><span>Emergency Information Vault</span>
+    <small>Multi-profile prototype using HTML, CSS, JavaScript, and Local Storage.</small>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>
