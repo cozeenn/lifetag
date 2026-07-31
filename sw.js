@@ -1,5 +1,5 @@
-const CACHE="lifetag-v7";
-const ASSETS=["./","index.html","profiles.html","profile.html","emergency.html","add-profile.html","care.html","settings.html","auth.html","style.css","app.js","care.js","backend.js","auth.js","qr.js","assets/logo.svg"];
+const CACHE="lifetag-v8";
+const ASSETS=["./","index.html","profiles.html","profile.html","emergency.html","add-profile.html","care.html","settings.html","auth.html","admin.html","style.css","app.js","care.js","backend.js","auth.js","admin.js","qr.js","assets/logo.svg"];
 self.addEventListener("install",event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)).then(()=>self.skipWaiting())));
 self.addEventListener("activate",event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key!==CACHE).map(key=>caches.delete(key)))).then(()=>self.clients.claim())));
 self.addEventListener("fetch",event=>{if(event.request.method!=="GET")return;event.respondWith(fetch(event.request).then(response=>{const copy=response.clone();caches.open(CACHE).then(cache=>cache.put(event.request,copy));return response;}).catch(()=>caches.match(event.request).then(response=>response||caches.match("index.html"))));});

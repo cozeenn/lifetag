@@ -52,6 +52,11 @@ create table public.notification_jobs (
   payload jsonb not null default '{}', scheduled_for timestamptz not null, delivered_at timestamptz,
   created_at timestamptz not null default now()
 );
+create table public.admin_users (
+  user_id uuid primary key references auth.users(id) on delete cascade,
+  role text not null check(role in ('support','organization_admin','clinical_reviewer','security_auditor','system_admin')),
+  active boolean not null default true, created_at timestamptz not null default now(), created_by uuid references auth.users(id)
+);
 
 create or replace function public.can_access_profile(pid text, required public.member_role default 'viewer') returns boolean
 language sql stable security definer set search_path=public as $$
@@ -64,6 +69,7 @@ alter table public.households enable row level security; alter table public.hous
 alter table public.health_profiles enable row level security; alter table public.care_records enable row level security;
 alter table public.health_documents enable row level security; alter table public.share_links enable row level security;
 alter table public.audit_events enable row level security; alter table public.notification_jobs enable row level security;
+alter table public.admin_users enable row level security;
 
 create policy "households owner" on public.households for all using(owner_id=auth.uid()) with check(owner_id=auth.uid());
 create policy "members see household" on public.household_members for select using(user_id=auth.uid() or exists(select 1 from households h where h.id=household_id and h.owner_id=auth.uid()));
@@ -83,6 +89,7 @@ create policy "documents write" on public.health_documents for all using(public.
 create policy "shares owner" on public.share_links for all using(created_by=auth.uid()) with check(created_by=auth.uid());
 create policy "audit own profile" on public.audit_events for select using(public.can_access_profile(profile_id,'viewer'));
 create policy "notifications own" on public.notification_jobs for all using(user_id=auth.uid()) with check(user_id=auth.uid());
+create policy "admins see own assignment" on public.admin_users for select to authenticated using(user_id=(select auth.uid()) and active=true);
 
 insert into storage.buckets(id,name,public,file_size_limit,allowed_mime_types) values('health-documents','health-documents',false,10485760,array['application/pdf','image/jpeg','image/png','text/plain']) on conflict(id) do nothing;
 create policy "private health document read" on storage.objects for select using(bucket_id='health-documents' and auth.uid()::text=(storage.foldername(name))[1]);

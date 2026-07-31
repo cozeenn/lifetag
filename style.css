@@ -909,6 +909,16 @@ html[data-cloud="queued"] .cloud-pill,html[data-cloud="syncing"] .cloud-pill { b
 .cloud-card { border-color:rgba(24,167,110,.25); }
 @media(max-width:850px){.auth-layout{grid-template-columns:1fr;gap:35px;padding-top:55px}.cloud-pill{align-self:flex-start}}
 
+/* Restricted administration portal */
+.admin-gate { max-width:620px; margin:40px auto; text-align:center; }.admin-gate h2 { margin-top:0; }
+.admin-toolbar { display:flex; align-items:center; justify-content:space-between; gap:20px; margin-bottom:20px; padding:16px 20px; border:1px solid var(--line); border-radius:16px; background:var(--surface); }
+.admin-toolbar strong,.admin-toolbar span { display:block; }.admin-toolbar span { margin-top:4px; color:var(--muted); font-size:.75rem; text-transform:capitalize; }
+.admin-panel { display:none; }.admin-panel.active { display:block; }.admin-search { min-width:280px; border:1px solid var(--line); border-radius:10px; background:var(--surface); color:var(--ink); padding:11px 13px; }
+.admin-table-wrap { overflow:auto; border:1px solid var(--line); border-radius:18px; background:var(--surface); }.admin-table { width:100%; border-collapse:collapse; }
+.admin-table th,.admin-table td { padding:15px; border-bottom:1px solid var(--line); text-align:left; vertical-align:middle; }.admin-table th { color:var(--muted); font-size:.7rem; letter-spacing:.05em; text-transform:uppercase; }
+.admin-table td strong,.admin-table td small { display:block; }.admin-table td small { max-width:220px; margin-top:4px; overflow:hidden; color:var(--muted); font-size:.7rem; text-overflow:ellipsis; }
+@media(max-width:680px){.admin-toolbar,.list-heading{align-items:stretch;flex-direction:column}.admin-search{width:100%;min-width:0}}
+
 @media print {
   body * { visibility: hidden; }
 
