@@ -9,7 +9,7 @@ drop policy if exists "admins see own assignment" on public.admin_users;
 create policy "admins see own assignment" on public.admin_users for select to authenticated using(user_id=(select auth.uid()) and active=true);
 
 insert into public.admin_users(user_id,role)
-select id,'system_admin' from auth.users where email='REPLACE_WITH_YOUR_CONFIRMED_EMAIL'
+select id,'system_admin' from auth.users where email='reotan040@gmail.com'
 on conflict(user_id) do update set role='system_admin',active=true;
 
 select a.user_id,u.email,a.role,a.active from public.admin_users a join auth.users u on u.id=a.user_id;
