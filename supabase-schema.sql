@@ -72,6 +72,10 @@ create policy "profiles read" on public.health_profiles for select using(public.
 create policy "profiles insert" on public.health_profiles for insert with check(owner_id=auth.uid());
 create policy "profiles update" on public.health_profiles for update using(public.can_access_profile(id,'editor'));
 create policy "profiles delete" on public.health_profiles for delete using(owner_id=auth.uid());
+create policy "profile owner select" on public.health_profiles for select to authenticated using(owner_id=(select auth.uid()));
+create policy "profile owner insert" on public.health_profiles for insert to authenticated with check(owner_id=(select auth.uid()));
+create policy "profile owner update" on public.health_profiles for update to authenticated using(owner_id=(select auth.uid())) with check(owner_id=(select auth.uid()));
+create policy "profile owner delete" on public.health_profiles for delete to authenticated using(owner_id=(select auth.uid()));
 create policy "care read" on public.care_records for select using(public.can_access_profile(profile_id,'viewer'));
 create policy "care write" on public.care_records for all using(public.can_access_profile(profile_id,'editor')) with check(public.can_access_profile(profile_id,'editor') and owner_id=auth.uid());
 create policy "documents read" on public.health_documents for select using(public.can_access_profile(profile_id,'viewer'));
